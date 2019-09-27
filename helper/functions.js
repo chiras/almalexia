@@ -1,12 +1,29 @@
 const dh = require("../helper/db.js")
 
-function editMessages(bot,channelid,messageid,outputText, field, Discord){
+var isUserID = new RegExp(/\<\@[0-9]+\>/g)
+
+
+function editMessages(bot,channelid,messageid, outputText, count, field, Discord){
   bot.channels.get(channelid).fetchMessage(messageid).then(message => {
     if (outputText.length>0){
    			message.embeds[0].fields[field].value = outputText;
     }else{
       message.embeds[0].fields[field].value = "<none>";
     }
+    var name = "Unspecified";
+    switch (field) {
+        case 1:
+          name = 'Signups';
+          break;
+        case 3:
+          name = 'Declines';
+          break;
+        case 2:
+          name = 'Reserves';
+          break;
+        //else?
+    };
+    message.embeds[0].fields[field].name = name + ": " + count;
    	message.edit(new Discord.RichEmbed(message.embeds[0]));
   }).catch(console.error);
 }
@@ -38,6 +55,9 @@ exports.updateSignups = function(eventid, bot, mysql, Discord, reactsignup) {
   				return {role: all2.role, user: "<@"+all2.duserid+">", type : all2.type};
   			})//.join(",");//.filter( onlyUnique ).join(",");
 
+        var counts = {  Signups : 0, Reserves : 0, Declines : 0};
+        var counted = [];
+
         console.log(signups)
 
           var output = [];
@@ -66,9 +86,11 @@ exports.updateSignups = function(eventid, bot, mysql, Discord, reactsignup) {
         			    break;
         			  case 'decline':
         					type = 2;
+                //  counts.Declines++;
         					break;
         			  case 'reserve':
         					type = 1;
+                //  counts.Reserves++;
         					break;
         				//else?
             };
@@ -93,14 +115,19 @@ exports.updateSignups = function(eventid, bot, mysql, Discord, reactsignup) {
             var reserve = outputText.filter(type => type.startsWith("1")).join("\n").replace(/1\|/g,"");
             var declined = outputText.filter(type => type.startsWith("2")).join("\n").replace(/2\|/g,"");
 
-              editMessages(bot,all2[0].channelid,all2[0].announceid, signed, 1, Discord)
-              editMessages(bot,all2[0].channelid2,all2[0].announceid2, signed, 1, Discord)
-              editMessages(bot,all2[0].channelid,all2[0].announceid, reserve, 2, Discord)
-              editMessages(bot,all2[0].channelid2,all2[0].announceid2, reserve, 2, Discord)
-              editMessages(bot,all2[0].channelid,all2[0].announceid, declined, 3, Discord)
-              editMessages(bot,all2[0].channelid2,all2[0].announceid2, declined, 3, Discord)
+            counts.Signups = (signed.match(isUserID) || []).filter( onlyUnique ).length;
+            counts.Reserves = (reserve.match(isUserID) || []).filter( onlyUnique ).length;
+            counts.Declines = (declined.match(isUserID) || []).filter( onlyUnique ).length;
 
             console.log(signed)
+
+              editMessages(bot,all2[0].channelid,all2[0].announceid, signed, counts.Signups, 1, Discord)
+              editMessages(bot,all2[0].channelid2,all2[0].announceid2, signed, counts.Signups, 1, Discord)
+              editMessages(bot,all2[0].channelid,all2[0].announceid, reserve, counts.Reserves, 2, Discord)
+              editMessages(bot,all2[0].channelid2,all2[0].announceid2, reserve, counts.Reserves, 2, Discord)
+              editMessages(bot,all2[0].channelid,all2[0].announceid, declined, counts.Declines, 3, Discord)
+              editMessages(bot,all2[0].channelid2,all2[0].announceid2, declined, counts.Declines, 3, Discord)
+
             //return;
 
             // outputText.forEach(test => {
