@@ -1,0 +1,21 @@
+
+					var availableRoles = allRoles.filter( roles => roles.eventid == element[0]).map(roles => {
+						return roles.rolesymbol;
+					});
+
+
+EXT:
+guild: 230586115877240832
+announce: 230592026951811074
+officer: 230588178409455616
+
+A2:
+guikd: 626677421101547521
+announce: 626677470157864960
+officer: 626677622054846484
+
+ROLES:
+ecg 544485430511271939
+erg 362321307917877250
+
+

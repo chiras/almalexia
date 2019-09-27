@@ -1,0 +1,14 @@
+{
+  "name": "Almalexia",
+  "version": "0.1.0",
+  "description": "Almalexia",
+  "main": "almalexia.js",
+  "author": "chi-ras",
+  "dependencies": {
+    "discord.js": "^11.5.26",
+    "moment-timezone": "^0.5.13",
+    "mysql": "^2.17.1"
+    "moment-timezone": "^0.5.13",
+    "node-schedule": "1.3.2"
+    }
+}
