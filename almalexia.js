@@ -1,7 +1,5 @@
 
 //# 519232 Auth type discord
-//# https://discordapp.com/api/oauth2/authorize?client_id=624936305637195777&scope=bot&permissions=519232
-
 
 // local data
 const tokens = require('./tokens/live.json');
@@ -42,10 +40,15 @@ var mysql = sql.createPool({
 bot.on("message", (msg) => {
 
   // Set the prefix
-  let prefix = "+";
+  let prefix = tokens["prefix"];
+  let channel = tokens["channelprefix"];
 
   // Exit and stop if it's not there or another bot or wrong channel
-  if (!msg.channel.name.startsWith("dev-")) return;
+  var registeredGuilds = bot["alemalexiaguilds"].map(registered => {
+    return registered.guildid
+  })
+  if (!registeredGuilds.includes(msg.guild.id)) return;
+  if (!msg.channel.name.startsWith(channel)) return;
   if (!msg.content.startsWith(prefix)) return;
   if (msg.content.startsWith(prefix+prefix)) return;
   if (msg.author.bot) return;
@@ -56,10 +59,11 @@ bot.on("message", (msg) => {
 
     	var responses = {
     		//v2 ready
-        //"+repost" 		: function(){event_create(bot, msg, options, mysql, "repost", Discord);}, //options,
+      //  "+repost" 		: function(){event_create(bot, msg, options, mysql, "repost", Discord);}, //options,
         "+create" 		: function(){event_create(bot, msg, options, mysql, "create", Discord);}, //options,
-    		//"+delete" 		: function(){event_create(bot, msg, options, mysql, "delete", Discord);}, //options,
-        //"+cancel" 		: function(){event_create(bot, msg, options, mysql, "cancel", Discord);}, //options,
+    		"+delete" 		: function(){event_create(bot, msg, options, mysql, "delete", Discord);}, //options,
+        "+cancel" 		: function(){event_create(bot, msg, options, mysql, "cancel", Discord);}, //options,
+        "+close" 		: function(){event_create(bot, msg, options, mysql, "close", Discord);}, //options,
 
         // "+signup" 		: function(){event_signup(bot, msg, options, mysql, "signup", Discord);},
         // "+maybe" 		  : function(){event_signup(bot, msg, options, mysql, "maybe", Discord);},
@@ -92,7 +96,7 @@ bot.on('ready', () => {
 
         var myVar = setInterval(function(){
           tasks.update (bot, mysql, Discord);
-        }, 10000); // every 10 secs
+        }, 20000); // every 10 secs
 
       });
 

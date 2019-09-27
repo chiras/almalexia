@@ -1,8 +1,8 @@
 {
-"tokenset" 	: "dev",
-"twitch" 	: "",
-"discord" 	: "",
-"id" 		: "",
-"listening" : "",
-"logging" 	: ""
+  "tokenset" 	: "live",
+  "discord" 	: "",
+  "channelprefix" : "eso-",
+  "prefix" 	: "+",
+  "mysqluser" : "",
+  "mysqlpass" : ""
 }

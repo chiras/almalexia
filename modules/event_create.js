@@ -59,7 +59,7 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 
 	}
 
-max = 12;
+  max = 12;
 
 	if (options["role"].length == 0){
 		eventroles = [[ symbols[0], max, 'signup' ]];
@@ -119,6 +119,7 @@ max = 12;
       rolerestr = "This event is restricted to the <@&"+options["restriction"][0]+"> role. "
     }
 		embed.addField("Notes:", rolerestr +  "For further details ask <@"+msg.author.id+">")
+    embed.setFooter("_");
 
 
 		// for now dont use the helper because of msg id
@@ -127,10 +128,11 @@ max = 12;
 		// });
 
 		let messageid;
+    let messageid2;
 
 		msg.channel.send({embed: embed}).then( sent => { // 'sent' is that message you just sent
   		messageid = sent.id;
-			addReacts(sent,eventroles.map(roles => {return roles[0]}));
+      addReacts(sent,eventroles.map(roles => {return roles[0]}));
 
 			//console.log("1: "+messageid);
 
@@ -138,9 +140,9 @@ max = 12;
 			//embed.fields[embed.fields.length-1].value = "Head to <#"+msg.channel.id+"> and type +signup to sign up for this event! "+  "For further details ask <@"+msg.author.id+">";
 
 			bot.channels.get(options["announcechannel"]).send({embed: embed}).then( sent2 => { // 'sent' is that message you just sent
-	  		messageid2 = sent2.id;
-				addReacts(sent2,eventroles.map(roles => {return roles[0]}));
+      messageid2 = sent2.id;
 
+      addReacts(sent2,eventroles.map(roles => {return roles[0]}));
 
 
 			//	console.log("1x: "+messageid2);
@@ -158,9 +160,19 @@ max = 12;
 
 				dh.mysqlQuery(mysql, queryRoles, function(errRoles, allRoles) {
 					fh.success(msg,"TRUE")
+
+          bot.channels.get( msg.channel.id).fetchMessage(sent.id).then(message => {
+            message.embeds[0].footer.text = 'Event-ID: #' + all.insertId;
+     	      message.edit(new Discord.RichEmbed(message.embeds[0]));
+          })
+
+          bot.channels.get(options["announcechannel"]).fetchMessage(sent2.id).then(message => {
+            message.embeds[0].footer.text = 'Event-ID: #' + all.insertId;
+     	      message.edit(new Discord.RichEmbed(message.embeds[0]));
+          })
+
+          //.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 					return (allRoles)
-
-
 
 				});
 				return (all)
@@ -168,6 +180,65 @@ max = 12;
 		});
 	});
 
-	}
+}else{
+  // need to check  guild, so no cross guild deletes
+  if (options["eventid"][0] != "undefined"){
+  //console.log(type);
+
+  var query = "SELECT * FROM events WHERE eventid= '"+options["eventid"][0]+"'; ";
+  var queryU = "UPDATE events SET active = 0 WHERE eventid= '"+options["eventid"][0]+"';";
+
+  dh.mysqlQuery(mysql, query, function(err, all) {
+    //console.log(all)
+    //console.log(msg.guild.id + "!="+ all[0].guildid);
+    if ( msg.guild.id != all[0].guildid){
+      fh.success(msg,"FALSE")
+      return
+    }
+
+    dh.mysqlQuery(mysql, queryU, function(err2, all2) {
+
+  if (type == "cancel"){
+    bot.channels.get(all[0].channelid).fetchMessage(all[0].announceid).then(message => {
+      message.embeds[0].description = ":no_entry_sign: This event has been canceled! :no_entry_sign: ";
+      message.edit(new Discord.RichEmbed(message.embeds[0]));
+      message.clearReactions();
+    })
+
+    bot.channels.get(all[0].channelid2).fetchMessage(all[0].announceid2).then(message => {
+      message.embeds[0].description = ":no_entry_sign: This event has been canceled! :no_entry_sign: ";
+      message.edit(new Discord.RichEmbed(message.embeds[0]));
+      message.clearReactions();
+    })
+    fh.success(msg,"TRUE")
+
+  }else	if (type == "delete"){
+    bot.channels.get(all[0].channelid).fetchMessage(all[0].announceid).then(message => {
+      message.delete();
+    })
+    bot.channels.get(all[0].channelid2).fetchMessage(all[0].announceid2).then(message => {
+      message.delete();
+    })
+    fh.success(msg,"TRUE")
+
+  }else	if (type == "close"){
+    bot.channels.get(all[0].channelid).fetchMessage(all[0].announceid).then(message => {
+      message.embeds[0].description = ":star: Signups are closed! Let's rock! :star: ";
+      message.edit(new Discord.RichEmbed(message.embeds[0]));
+      message.clearReactions();
+    })
+
+    bot.channels.get(all[0].channelid2).fetchMessage(all[0].announceid2).then(message => {
+      message.embeds[0].description = ":star: Signups are closed! Let's rock! :star: ";
+      message.edit(new Discord.RichEmbed(message.embeds[0]));
+      message.clearReactions();
+    })
+    fh.success(msg,"TRUE")
+
+  }
+}); // end db query
+}); // end db query
+  } // end if no event id
+} // endif "create"
 
 };

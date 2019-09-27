@@ -10,6 +10,8 @@ const isEmoji = emojiRegex();
 	var isDate = new RegExp('[0-9]{4}-[0-9]{2}-[0-9]{2}', 'i');
 	var isRole = new RegExp('[a-zA-Z]+:[0-9]+', 'i');
 	var isTime = new RegExp('[0-9]+:[0-9][0-9][ap]m', 'i');
+	var isEventID = new RegExp('\#[0-9]+', 'i');
+
 /**
 Argument Types:
 
@@ -41,6 +43,7 @@ exports.argumentSlicer = function(msg, callback){ // add required / optional?
 		"options" 		: [],
 		"role" 			: [],
 		"date"			: [],
+		"eventid"			: [],
 		"restriction"	: [],
 		"time"			: [],
 		"others" 			: []
@@ -81,6 +84,8 @@ exports.argumentSlicer = function(msg, callback){ // add required / optional?
     			returnObj["time"].push(argsArray[i])
 	    	}else if(argsArray[i].match(isGuildRole)){
     			returnObj["restriction"].push(argsArray[i].substring(3).slice(0, -1))
+				}else if(argsArray[i].match(isEventID)){
+    			returnObj["eventid"].push(argsArray[i].substring(1))
 	    	}else if(argsArray[i].match(isRole)){
     			//returnObj["role"].push(argsArray[i])
 					//console.log("R:" + argsArray[i])
