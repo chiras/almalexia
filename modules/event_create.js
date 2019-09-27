@@ -107,18 +107,17 @@ max = 12;
 			embed.setThumbnail(bot["alemalexiaspecials"].filter(para => para.trigg == "ECG")[0].logourl)
 			//embed.addField("Details:", bot["alemalexiaspecials"].filter(para => para.trigg ==  "ECG")[0].docsurl)
 			embed.setDescription(bot["alemalexiaspecials"].filter(para => para.trigg == "ECG")[0].description )
-			rolerestr = "This event is restricted to the eso-battle-ready role. " 
 		}else if(eventname.match(/ERG/)){
 			embed.setThumbnail(bot["alemalexiaspecials"].filter(para => para.trigg == "ERG")[0].logourl)
 			//embed.addField("Details:", bot["alemalexiaspecials"].filter(para => para.trigg ==  "ERG")[0].docsurl)
 			embed.setDescription(bot["alemalexiaspecials"].filter(para => para.trigg == "ERG")[0].description )
-			rolerestr = "This event is restricted to the eso-erg role. " 
 		}else{
 			embed.setThumbnail("https://images-ext-1.discordapp.net/external/BMLRG9klXozguEpuGEZVKBiEGd0X7ytyaUpnGhWje_c/https/s3-us-west-2.amazonaws.com/www.guilded.gg/team_images/avatars/e02bcbd00f793d50624b2ec1.jpg")
 			embed.setDescription("A new event has been created! ")
 }
-
-
+    if (options["restriction"].length > 0){
+      rolerestr = "This event is restricted to the <@&"+options["restriction"][0]+"> role. "
+    }
 		embed.addField("Notes:", rolerestr +  "For further details ask <@"+msg.author.id+">")
 
 

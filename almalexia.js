@@ -45,7 +45,7 @@ bot.on("message", (msg) => {
   let prefix = "+";
 
   // Exit and stop if it's not there or another bot or wrong channel
-  if (!msg.channel.name.startsWith("eso-")) return;
+  if (!msg.channel.name.startsWith("dev-")) return;
   if (!msg.content.startsWith(prefix)) return;
   if (msg.content.startsWith(prefix+prefix)) return;
   if (msg.author.bot) return;
