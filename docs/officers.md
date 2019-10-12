@@ -32,7 +32,7 @@ Thus event creation should thus always happen in these specific channels. By tha
 
 The announcement channel will collect all event posts from all channels. It is thus to be regarded as a "collection of events" for members to have an overview over all currently available events, not as the place to create events. Some members may not even be able to signup (see restriction options below), but still can see that there is an event.
 
-Thus, the bot will always create *2* event posts (you dont want them in the same channel!). Signups for users are possible by reaction to either post.
+Thus, the bot will always create **2** event posts (and you dont want them in the same channel!). Signups for users are possible by reaction to either post.
 
 ## Bare minimum syntax
 
