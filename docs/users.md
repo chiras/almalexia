@@ -1,4 +1,4 @@
-# Contents header
+# Almalexia User Guide
 {:.no_toc}
 
 * A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
@@ -11,9 +11,9 @@ You will probably see a post resembling this. If you are unsure about how to sig
 
 ![Signup Window](https://media.discordapp.net/attachments/632545040190668801/632545196311314442/Bildschirmfoto_2019-10-12_um_13.21.56.png)
 
-# Almalexia User Guide
+# Signups
 
-## Updating your choices
+## Things "good to know"
 
 **Reactions are screened in intervalls:** This means, it can take up to 20 seconds that your reaction is recorded and integrated into the signup list. Your reaction will be removed by the bot, as a confirmation that it has been recorded and your Discord tag will appear at the appropriate position in the event signup list
 
