@@ -20,6 +20,18 @@ Use the ```+delete``` option described below instead.
 ***
 # Event creation
 
+## Where to create events?
+
+The bot is differentiating two different channels for event posting and signups:
+* Current channel
+* General announcement channel
+
+The idea behind this is that there are usually some separate type of channels on each Discord guild server, serving different purposes, e.g. PvP, Trials, Dungeons, Social...
+
+Thus event creation should thus always happen in these specific channels. By that, events can be themed, resticted to a particular audience... 
+
+The announcement channel will collect all event posts from all channels. It is thus to be regarded as a "collection of events" for members to have an overview over all currently available events, not as the place to create events. Some members may not even be able to signup (see restriction options below), but still can see that there is an event.
+
 ## Bare minimum syntax
 
 ```
