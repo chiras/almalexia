@@ -61,12 +61,22 @@ You have to keep to this format h:mm(p/a)m for the bot to recognize the date as 
 ------
 ## Roles
 
-Roles can be added by 
+To overwrite the default **12 ✅** roles assigned to events, roles can be added by listing all wanted roles as emojis alongside their number
 
 ```
 +create "Here my event name"  2 :bandage: 2 :shield: 8 :crossed_swords: 
 ```
+The syntax is for each: "Number Emoji", be sure that there **one** space between.
+You can add as many roles as you want, the above is just a typical trial example. BUT, do not use server-internal emojis, only unicode emotes (see: [Full List](https://unicode.org/emoji/charts/full-emoji-list.html)), and even some of those might not work. If you encounter some emotes that are not working, but such you would like to use, feel free to contact me, I might add them. 
 
+```
++create "Weird event" 2 :shield: 2 :head_bandage: 2 :bow_and_arrow: 2 :fire: 4 :unicorn: 3 :smiley: 9 :flag_ch: 3 :flag_ac: 3 :flag_ae: 2 :recycle:
+
+```
+
+Would create something like this 
+
+![multi Role setup](https://cdn.discordapp.com/attachments/632545040190668801/632569114296057866/Bildschirmfoto_2019-10-12_um_15.23.21.png)
 
 ------
 ## Signup restriction
