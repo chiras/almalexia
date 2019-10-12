@@ -6,5 +6,5 @@ The Almalexia Discord Bot is a simple event and signup manager for Discord. It i
 ## Documentation
 
 * For Users: [User Documentation](users.md)
-* For Server Officers: (toDo)
+* For Server Officers: [Officer Documentation](officers.md)
 * For Admins: (toDo)
