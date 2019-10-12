@@ -2,9 +2,12 @@
 
 Signups are simple with the bot, basically there are 3+ reactions attached to each event post upon event generation. You can click these to choose your signup, role or decline.
 
-![Signup Window](https://media.discordapp.net/attachments/632545040190668801/632545196311314442/Bildschirmfoto_2019-10-12_um_13.21.56.png)
+{:toc} 
 
 You will probably see a post resembling this. If you are unsure about how to signup, emotes, or changing choices, see below.
+
+![Signup Window](https://media.discordapp.net/attachments/632545040190668801/632545196311314442/Bildschirmfoto_2019-10-12_um_13.21.56.png)
+
 
 ## Updating your choices
 
