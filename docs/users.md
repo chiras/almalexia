@@ -10,7 +10,8 @@ Signups are simple with the bot, basically there are 3+ reactions attached to ea
 
 
 
-======
+***
+
 # Signups
 
 ## Things "good to know"
@@ -27,7 +28,8 @@ Closed and the event will happen:
 Closed but the event has been canceled:
 ![Canceled Event](https://cdn.discordapp.com/attachments/632545040190668801/632546239329861642/alma_canceled.png)
 
-======
+*** 
+
 ## Options
 ### Positive signup options
 There may or may not be multiple different roles available, depending on 
@@ -52,7 +54,7 @@ For us to plan our events, it is usually helpful to also have an idea which play
 
 ❌ **Declines:** "I will not attend this event.
 
-======
+***
 # Role/Signup Caps
 
 Events usually have information about the group composition, in general or for each role.
@@ -66,7 +68,7 @@ The bot does not automatically hard-cap signups! This means signups in general o
 
 Signups are ordered according to signup time.
 
-======
+***
 # Questions about the event
 
 The officer creating the event will be tagged at the bottom of the signup post. Please refer to him if something (e.g. roles are unclear).
