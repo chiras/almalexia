@@ -1,7 +1,7 @@
 
 # Almalexia Discord Bot
 
-The Almalexia Discord Bot is a simple event and signup manager for Discord. It is not intended for wide usage, but only my personal guilds, as we have very specific ideas how our events are set up. If you are interested in the code, just open an issue, I will gladly provide access it (and later once it is stable, generally public) so that you can host your own instance for your servers.
+The Almalexia Discord Bot is a simple event and signup manager for Discord. It is not intended for wide usage, but only my personal guilds, as we have very specific ideas how our events are set up. If you are interested in the code, just open an issue, I will gladly provide access to it (and later once it is stable, make it generally public) so that you can host your own instance for your servers.
 
 ## Documentation
 
