@@ -103,6 +103,33 @@ Events may be restricted to **one** Discord member role. Only users with this ta
 ***
 # Event closing
 
+At the bottom of each event post, you will see an event ID. This ID can be used to close events via two different commands:
+![event id](https://cdn.discordapp.com/attachments/632545040190668801/632570427855732736/Bildschirmfoto_2019-10-12_um_15.28.48.png)
+
+* **Closing an event**
+
+This will tell the users, "yes, the event is happening, but no more signups are allowed". 
+
+```
++close #1234
+```
+
+* **Canceling an event**
+
+This will tell the users, "no, the event is not going to happen". 
+
+```
++close #1234
+```
+There may be various reasons to close or cancel events, e.g. signup cap reached, crown got ill, whatever. But most obviously, the date/time of the event has been reached. **I strongly recommend to close all events manually at the moment**. I will implement a function that will auto-close events, when they are about to happen, but currently this is not a feature.
 
 ***
 # Event deletion
+
+If something went wrong during event creation, use this command
+
+```
++delete #1234
+```
+
+This will remove all posts by the bot from this respective event in your channels. Please do not manually delete messages of the bot for now, I am working on this -- it will currently crash the bot (reliably).
