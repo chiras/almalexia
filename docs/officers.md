@@ -108,11 +108,9 @@ Events may be restricted to **one** Discord member role. Only users with this ta
 
 
 ------
-## Description (not implemented, toDo)
+## Description/Notes (not implemented, toDo)
 
-------
-## Notes (not implemented, toDo)
-
+Currently there is not option to change the description or the notes, but I intend to add it. No ETA though, sorry!
 
 ***
 # Event closing
