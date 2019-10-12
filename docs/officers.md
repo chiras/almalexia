@@ -38,6 +38,7 @@ All the following described parameters can be combined in any order. A full exam
 +create "Here my event name" 2019-12-20 8:15pm 2 :bandage: 2 :shield: 8 :crossed_swords: @trial-group
 ```
 
+None of these following parameters is mandatory, but you probably do not want only events today and some more adjustments :)
 
 ------
 ## Date and Time
@@ -62,8 +63,20 @@ You have to keep to this format h:mm(p/a)m for the bot to recognize the date as 
 
 Roles can be added by 
 
+```
++create "Here my event name"  2 :bandage: 2 :shield: 8 :crossed_swords: 
+```
+
+
 ------
 ## Signup restriction
+
+Events may be restricted to **one** Discord member role. Only users with this tag will be signup, reactions by all other members are ignored. To do this, just tag the role in your event creation:
+
+```
++create "Here my event name" @trial-group
+```
+
 
 ------
 ## Description (not implemented, toDo)
