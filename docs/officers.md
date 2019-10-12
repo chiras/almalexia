@@ -106,6 +106,9 @@ Events may be restricted to **one** Discord member role. Only users with this ta
 At the bottom of each event post, you will see an event ID. This ID can be used to close events via two different commands:
 ![event id](https://cdn.discordapp.com/attachments/632545040190668801/632570427855732736/Bildschirmfoto_2019-10-12_um_15.28.48.png)
 
+There may be various reasons to close or cancel events, e.g. signup cap reached, crown got ill, whatever. But most obviously, the date/time of the event has been reached. **I strongly recommend to close or cancel all events manually at the moment**. I will implement a function that will auto-close events, when they are about to happen, but currently this is not a feature.
+
+
 * **Closing an event**
 
 This will tell the users, "yes, the event is happening, but no more signups are allowed". 
@@ -114,14 +117,19 @@ This will tell the users, "yes, the event is happening, but no more signups are 
 +close #1234
 ```
 
+Emotes are removed, but post remains visible with a note:
+![Closed Event](https://cdn.discordapp.com/attachments/632545040190668801/632546241414299658/alma_closed.png)
+
 * **Canceling an event**
 
 This will tell the users, "no, the event is not going to happen". 
 
 ```
-+close #1234
++cancel #1234
 ```
-There may be various reasons to close or cancel events, e.g. signup cap reached, crown got ill, whatever. But most obviously, the date/time of the event has been reached. **I strongly recommend to close all events manually at the moment**. I will implement a function that will auto-close events, when they are about to happen, but currently this is not a feature.
+
+Emotes are removed, but post remains visible with a note:
+![Canceled Event](https://cdn.discordapp.com/attachments/632545040190668801/632546239329861642/alma_canceled.png)
 
 ***
 # Event deletion
