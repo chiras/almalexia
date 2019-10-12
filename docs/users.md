@@ -1,7 +1,9 @@
-# Almalexia User Guide
+# Contents header
+{:.no_toc}
 
-* Toc
-{:toc} 
+* A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
+{:toc}
+
 
 Signups are simple with the bot, basically there are 3+ reactions attached to each event post upon event generation. You can click these to choose your signup, role or decline.
 
@@ -9,6 +11,7 @@ You will probably see a post resembling this. If you are unsure about how to sig
 
 ![Signup Window](https://media.discordapp.net/attachments/632545040190668801/632545196311314442/Bildschirmfoto_2019-10-12_um_13.21.56.png)
 
+# Almalexia User Guide
 
 ## Updating your choices
 
