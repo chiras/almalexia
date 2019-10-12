@@ -2,20 +2,46 @@
 
 Signups are simple with the bot, basically there are 3+ reactions attached to each event post upon event generation. You can click these to choose your signup, role or decline.
 
+![Signup Window](https://media.discordapp.net/attachments/632545040190668801/632545196311314442/Bildschirmfoto_2019-10-12_um_13.21.56.png)
+
+You will probably see a post resembling this. If you are unsure about how to signup, emotes, or changing choices, see below.
+
+## Updating your choices
+
 **Reactions are screened in intervalls:** This means, it can take up to 20 seconds that your reaction is recorded and integrated into the signup list. Your reaction will be removed by the bot, as a confirmation that it has been recorded and your Discord tag will appear at the appropriate position in the event signup list
 
-❌ **Declines:** "I will not attend this event.
+**Changing signups**
 
-**Signups:** There may or may not be multiple different roles available, depending on 
+You can always change your signups/decline etc. until events are closed by an officer. After that you will not be able to change roles, declines or signups anymore. The event will then not have attached emotes anymore and the header has been changed to something like the following: 
+
+Closed and the event will happen: 
+![Closed Event](https://cdn.discordapp.com/attachments/632545040190668801/632546241414299658/alma_closed.png)
+
+Closed but the event has been canceled:
+![Canceled Event](https://cdn.discordapp.com/attachments/632545040190668801/632546239329861642/alma_canceled.png)
+
+## Positive signup options
+There may or may not be multiple different roles available, depending on 
 
 ✅ This is the default signup botton, if no other roles have been defined by the corresponding officer.
 
-There may be other symbols, if specific roles are required for an event. The officer can choose a wide range of emotes, so find your apprpriate role there.
+There may be other symbols instead or additionally, if specific roles are required for an event. The officer can choose a wide range of emotes, so find your apprpriate role there. So anything that is not listed below as an emote, is a choice for positive signup. 
+
+## Reserves signup options
+We usually have some players that are unsure about their attendance or know that they will be late. There are two options for the users to note this down:
+
+⏰ "I will come, but I will be late"
+❓ "I may come, not sure yet" 
+
+It is the officers task to address how they can or will attend the event, which will probably most times depend on what type of event (specific number of attendees/roles) and the other signups.
+
+## Declines
+For us to plan our events, it is usually helpful to also have an idea which player do not intend to come. E.g. to cancel events if we dont reach the numbers.
+
+❌ **Declines:** "I will not attend this event.
+
 
 **Questions about the event**
 
 The officer creating the event will be tagged at the bottom of the signup post. Please refer to him if something (e.g. roles are unclear).
 
-**Changing signups**
-
-You can always change your signups/decline etc. until events are closed by an officer. After that you will not be able to change roles, declines or signups anymore
