@@ -29,6 +29,7 @@ There may be other symbols instead or additionally, if specific roles are requir
 We usually have some players that are unsure about their attendance or know that they will be late. There are two options for the users to note this down:
 
 ⏰ "I will come, but I will be late"
+
 ❓ "I may come, not sure yet" 
 
 It is the officers task to address how they can or will attend the event, which will probably most times depend on what type of event (specific number of attendees/roles) and the other signups.
