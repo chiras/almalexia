@@ -10,7 +10,8 @@ The general procedure is
 3. Always perform an **event closing** (this will set the event to inactive and will not be further screened for reactions)
 
 **IF SOMETHING WENT WRONG IN EVENT CREATION OR YOU WANT TO DELETE AN EVENT, PLEASE DO NOT SIMPLY REMOVE THE MESSAGE**
-This may crash the bot, as it currently will still search for the associated message, which do not exist anymore. I will take care of that at some time, but for now: **DO NOT DELETE EVENT POSTS OF THE BOT MANUALLY**
+
+This may crash the bot, as it currently will still search for the associated message, which does obviously not exist anymore. I will take care of that at some time, but for now: **DO NOT DELETE EVENT POSTS OF THE BOT MANUALLY**
 Use the ```+delete``` option described below instead.
 
 # Event creation
