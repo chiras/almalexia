@@ -17,7 +17,7 @@ This may crash the bot, as it currently will still search for the associated mes
 
 Use the ```+delete``` option described below instead.
 
-======
+***
 # Event creation
 
 ## Bare minimum syntax
@@ -72,9 +72,9 @@ Roles can be added by
 ## Notes (not implemented, toDo)
 
 
-======
+***
 # Event closing
 
 
-======
+***
 # Event deletion
