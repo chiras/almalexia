@@ -10,9 +10,7 @@ You will probably see a post resembling this. If you are unsure about how to sig
 
 **Reactions are screened in intervalls:** This means, it can take up to 20 seconds that your reaction is recorded and integrated into the signup list. Your reaction will be removed by the bot, as a confirmation that it has been recorded and your Discord tag will appear at the appropriate position in the event signup list
 
-**Changing signups**
-
-You can always change your signups/decline etc. until events are closed by an officer. After that you will not be able to change roles, declines or signups anymore. The event will then not have attached emotes anymore and the header has been changed to something like the following: 
+**Changing signups:** You can always change your signups/decline etc. until events are closed by an officer. After that you will not be able to change roles, declines or signups anymore. The event will then not have attached emotes anymore and the header has been changed to something like the following: 
 
 Closed and the event will happen: 
 ![Closed Event](https://cdn.discordapp.com/attachments/632545040190668801/632546241414299658/alma_closed.png)
