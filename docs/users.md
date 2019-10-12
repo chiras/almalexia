@@ -41,7 +41,7 @@ For us to plan our events, it is usually helpful to also have an idea which play
 ❌ **Declines:** "I will not attend this event.
 
 
-**Questions about the event**
+## Questions about the event
 
 The officer creating the event will be tagged at the bottom of the signup post. Please refer to him if something (e.g. roles are unclear).
 
