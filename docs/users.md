@@ -48,7 +48,7 @@ For us to plan our events, it is usually helpful to also have an idea which play
 
 ❌ **Declines:** "I will not attend this event.
 
-## Role/Signup Caps
+# Role/Signup Caps
 
 Events usually have information about the group composition, in general or for each role.
 
@@ -61,7 +61,7 @@ The bot does not automatically hard-cap signups! This means signups in general o
 
 Signups are ordered according to signup time.
 
-## Questions about the event
+# Questions about the event
 
 The officer creating the event will be tagged at the bottom of the signup post. Please refer to him if something (e.g. roles are unclear).
 
