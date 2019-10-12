@@ -27,7 +27,12 @@ Use the ```+delete``` option described below instead.
 ```
 
 This will create an event **Today** at **9pm** with **12 ✅** roles. 
-Of course it possible to set these parameters (and more) manually, see below. But this is the bare minimum to successfully create an event
+Of course it possible to set these parameters (and more) manually, see below. But this is the bare minimum to successfully create an event.
+
+All events will additionally to signups or roles (see below) receive emojis automatically for 
+* ⏰ Late attending (listed under Reserves)
+* ❓ Maybe attending (listed under Reserves)
+* ❌ Declines
 
 ------
 ## Combining parameter
@@ -70,7 +75,7 @@ The syntax is for each: "Number Emoji", be sure that there **one** space between
 You can add as many roles as you want, the above is just a typical trial example. BUT, do not use server-internal emojis, only unicode emotes (see: [Full List](https://unicode.org/emoji/charts/full-emoji-list.html)), and even some of those might not work. If you encounter some emotes that are not working, but such you would like to use, feel free to contact me, I might add them. 
 
 ```
-+create "Weird event" 2 :shield: 2 :head_bandage: 2 :bow_and_arrow: 2 :fire: 4 :unicorn: 3 :smiley: 9 :flag_ch: 3 :flag_ac: 3 :flag_ae: 2 :recycle:
++create "Weird event" 2 :shield: 2 :head_bandage: 2 :bow_and_arrow: 2 :fire: 4 :unicorn: 3 :smiley: 9 :flag_ch: 3 :flag_ac: 3 :flag_ae:
 
 ```
 
