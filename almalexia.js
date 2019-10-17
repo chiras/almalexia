@@ -48,7 +48,7 @@ bot.on("message", (msg) => {
     return registered.guildid
   })
   if (!registeredGuilds.includes(msg.guild.id)) return;
-  if (!msg.channel.name.startsWith(channel)) return;
+//  if (!msg.channel.name.startsWith(channel)) return;
   if (!msg.content.startsWith(prefix)) return;
   if (msg.content.startsWith(prefix+prefix)) return;
   if (msg.author.bot) return;
@@ -64,6 +64,8 @@ bot.on("message", (msg) => {
     		"+delete" 		: function(){event_create(bot, msg, options, mysql, "delete", Discord);}, //options,
         "+cancel" 		: function(){event_create(bot, msg, options, mysql, "cancel", Discord);}, //options,
         "+close" 		: function(){event_create(bot, msg, options, mysql, "close", Discord);}, //options,
+        
+        // +help
 
         // "+signup" 		: function(){event_signup(bot, msg, options, mysql, "signup", Discord);},
         // "+maybe" 		  : function(){event_signup(bot, msg, options, mysql, "maybe", Discord);},
