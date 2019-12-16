@@ -62,17 +62,23 @@ None of these following parameters is mandatory, but you probably do not want on
 ------
 ## Date and Time
 
-Currently, this is not ideal, I will this more comfortable in an upcoming patch. But for now:
-
-**Adding a date:**
+**Setting day by date:**
 ```
 +create "Here my event name" 2019-12-20
 ```
 You have to keep to this format YYYY-MM-DD for the bot to recognize the date as such.
 
+**Setting day by weekday:**
+```
++create "Here my event name" thursday
+```
+This will create an event at the next upcoming thursday.
+
 **Adding a time:**
 ```
 +create "Here my event name" 8:15pm
++create "Here my event name" 8:15am
+
 ```
 You have to keep to this format h:mm(p/a)m for the bot to recognize the date as such. Add no spaces between the time and the am/pm.
 
@@ -115,11 +121,10 @@ Currently there is not option to change the description or the notes, but I inte
 ***
 # Event closing
 
+Events will be automatically closed once they are ongoing. Alternatively you can close it before, there may be various reasons to close or cancel events, e.g. signup cap reached, crown got ill, whatever. But most obviously, the date/time of the event has been reached. 
+
 At the bottom of each event post, you will see an event ID. This ID can be used to close events via two different commands:
 ![event id](https://cdn.discordapp.com/attachments/632545040190668801/632570427855732736/Bildschirmfoto_2019-10-12_um_15.28.48.png)
-
-There may be various reasons to close or cancel events, e.g. signup cap reached, crown got ill, whatever. But most obviously, the date/time of the event has been reached. **I strongly recommend to close or cancel all events manually at the moment**. I will implement a function that will auto-close events, when they are about to happen, but currently this is not a feature.
-
 
 * **Closing an event**
 
