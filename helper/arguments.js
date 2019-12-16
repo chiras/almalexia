@@ -12,6 +12,7 @@ const isEmoji = emojiRegex();
 	var isTime = new RegExp('[0-9]+:[0-9][0-9][ap]m', 'i');
 	var isEventID = new RegExp('\#[0-9]+', 'i');
 
+	const dayOfWeek = ["sun","mon","tue","wed","thu","fri","sat"];
 /**
 Argument Types:
 
@@ -43,6 +44,7 @@ exports.argumentSlicer = function(msg, callback){ // add required / optional?
 		"options" 		: [],
 		"role" 			: [],
 		"date"			: [],
+		"weekday"			: [],
 		"eventid"			: [],
 		"restriction"	: [],
 		"time"			: [],
@@ -76,7 +78,7 @@ exports.argumentSlicer = function(msg, callback){ // add required / optional?
 				if (argsArray[i].match(isEmoji)){
 					returnObj["role"].push([argsArray[i], Number(argsArray[i-1]), "signup"])
 				}else if (argsArray[i].startsWith("-")){
-    	    	returnObj["options"].push(argsArray[i])
+    	    returnObj["options"].push(argsArray[i])
     		}else if (argsArray[i] == ""){
      		}else if(argsArray[i].match(isDate)){
     			returnObj["date"].push(argsArray[i])
@@ -89,7 +91,9 @@ exports.argumentSlicer = function(msg, callback){ // add required / optional?
 	    	}else if(argsArray[i].match(isRole)){
     			//returnObj["role"].push(argsArray[i])
 					//console.log("R:" + argsArray[i])
-	    	}else{
+	    	}else if(dayOfWeek.includes(argsArray[i].slice(0,3).toLowerCase())){
+					returnObj["weekday"].push(argsArray[i])
+				}else{
     			returnObj["others"].push(argsArray[i])
 	    	}
        	} // end for

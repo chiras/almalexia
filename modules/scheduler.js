@@ -93,7 +93,7 @@ exports.update = (bot, mysql, Discord) => {
 					});
 
 
-					
+
 					//bot["alemalexiaspecials"].filter(para => para.special == "ECG")[0].rolerestriction;
 
 					//var roleId = "626472574871928842";

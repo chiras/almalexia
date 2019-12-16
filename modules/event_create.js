@@ -2,8 +2,17 @@ const mh = require("../helper/messages.js")
 const dh = require("../helper/db.js")
 const nh = require("../helper/names.js")
 const fh = require("../helper/functions.js")
+const th = require("../helper/timezone.js")
 
 const symbols = ["✅","❌","⏰","❓"];
+let dateoptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+};
 
 async function addReacts(message,eventroles) {
 	// symbols.reduce( async (previousPromise, nextID) => {
@@ -35,30 +44,66 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 	var eventtime = "9pm";
 	var eventname = "";
 
-	if (options["date"].length > 0){
-		eventdate = options["date"][0];
+  //
+	// if (options["date"].length > 0){
+	// 	eventdate = options["date"][0];
+	// }else{
+  //
+	// 	var today = new Date();
+	// 	var dd = today.getDate();
+  //
+	// 	var mm = today.getMonth()+1;
+	// 	var yyyy = today.getFullYear();
+  //
+	// 	if(dd<10)
+	// 	{
+	// 	    dd='0'+dd;
+	// 	}
+  //
+	// 	if(mm<10)
+	// 	{
+	// 	    mm='0'+mm;
+	// 	}
+  //
+	// 	eventdate = yyyy+'-'+mm+'-'+dd;
+  //
+	// }
+
+  console.log(bot.options)
+
+//// event schedule
+  var formatdate;
+
+  // day
+  if (options["weekday"].length > 0){
+    formatdate = th.getNextDayOfTheWeek(options["weekday"][0], false);
+  }else if (options["date"].length > 0){
+		formatdate = new Date(options["date"][0]);
 	}else{
+    formatdate = new Date();
+  }
 
-		var today = new Date();
-		var dd = today.getDate();
+  // time
+  if (options["time"].length > 0){
+		eventtime = options["time"][0].split(":");
+    eventtime[1]=Number(eventtime[1].slice(0,-2));
+    eventtime[0]=Number(eventtime[0]);
 
-		var mm = today.getMonth()+1;
-		var yyyy = today.getFullYear();
+    if (options["time"][0].slice(-2).toLowerCase() === "pm"){
+      eventtime[0]=eventtime[0]+12;
+    }
+    console.log("HH:" + eventtime[0] + "mm" + eventtime[1]);
+    formatdate.setHours(eventtime[0],eventtime[1],0,0);
+	}else{
+    formatdate.setHours(21,0,0,0);
+  }
 
-		if(dd<10)
-		{
-		    dd='0'+dd;
-		}
+  formatdatex = formatdate.toLocaleString('en-us', dateoptions)
+  eventstamp = formatdate.toLocaleString().slice(0, 19).replace('T', ' ');
 
-		if(mm<10)
-		{
-		    mm='0'+mm;
-		}
+  /// [TODO] need to change to timestamp in the database
 
-		eventdate = yyyy+'-'+mm+'-'+dd;
-
-	}
-
+  // Event roles
   max = 12;
 
 	if (options["role"].length == 0){
@@ -71,22 +116,10 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 	eventroles.push([ symbols[3], 99, 'reserve' ]);
 
 	console.log(eventroles);
-	//return
-
-	if (options["time"].length > 0){
-		eventtime = options["time"][0];
-	}
 
 	if (options["name"].length > 0){
 		eventname = options["name"][0];
 	}
-
-
-	// var eventroles = [
-  // 									{name: "d", max: 2},
-  //   								{name: "H", max: 1},
-  // 									{name: "T", max: 3}
-	// 								 ];
 
 	var eventrolesString = eventroles.filter(roles => roles[2] === "signup").map(r => r[0] + " x " + r[1]).join(', ');
 
@@ -96,7 +129,7 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 
 		var embed = mh.prepare(Discord);
 		embed.setTitle(eventname)
-		embed.addField("Date:", eventdate + " at " + eventtime)
+		embed.addField("Date:", formatdatex)
 		embed.addField("Signups:", "<none>")
 		embed.addField("Reserves:", "<none>")
 		embed.addField("Declines:", "<none>")
@@ -149,7 +182,7 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 			//	console.log("1x: "+messageid2);
 
 
-			var query = "INSERT into events (guildid, channelid, channelid2, eventname, date, time, announceid, announceid2, creator, special, restriction) VALUES ('" + msg.guild.id + "','"+ msg.channel.id + "','"+ options["announcechannel"] + "','" + eventname + "','" + eventdate +"','" + eventtime +"','" + messageid +"','" + messageid2 +"','" + msg.author.id+"','" + specialid +"','" + options["restriction"][0] +"');";
+			var query = "INSERT into events (guildid, channelid, channelid2, eventname, date, time, announceid, announceid2, creator, special, restriction, eventstamp) VALUES ('" + msg.guild.id + "','"+ msg.channel.id + "','"+ options["announcechannel"] + "','" + eventname + "','" + eventdate +"','" + eventtime +"','" + messageid +"','" + messageid2 +"','" + msg.author.id+"','" + specialid +"','" + options["restriction"][0] +"','" + eventstamp + "');";
 			//console.log(query)
 			dh.mysqlQuery(mysql, query, function(err, all) {
 				var queryRoles = "";

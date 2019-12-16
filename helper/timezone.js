@@ -1,4 +1,15 @@
 const moment = require('moment-timezone');
+const momentx = require('moment');
+
+exports.getNextDayOfTheWeek = function (dayName, excludeToday = true, refDate = new Date()) {
+      const dayOfWeek = ["sun","mon","tue","wed","thu","fri","sat"]
+                        .indexOf(dayName.slice(0,3).toLowerCase());
+      if (dayOfWeek < 0) return;
+      refDate.setHours(0,0,0,0);
+      refDate.setDate(refDate.getDate() + !!excludeToday +
+                      (dayOfWeek + 7 - refDate.getDay() - !!excludeToday) % 7);
+      return refDate;
+  }
 
 exports.searchZone = function (zone) {
     var z = zone.toLowerCase();
@@ -20,7 +31,7 @@ exports.searchZone = function (zone) {
 
     if (exact.length > 1)
         matches = [exact];
-    
+
     if (matches.length > 1) {
         // We don't care about duplicates if they are aliases of the same zone
         var off = moment.tz(matches[0]).utcOffset();

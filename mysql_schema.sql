@@ -26,6 +26,7 @@ CREATE TABLE `events` (
   PRIMARY KEY (`eventid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+ALTER TABLE events ADD eventstamp timestamp NOT NULL;
 
 DROP TABLE IF EXISTS `signups`;
 CREATE TABLE `signups` (
@@ -84,8 +85,3 @@ CREATE TABLE `guilds` (
  INSERT INTO guilds (guildid,guildname,channelid,officerid,logo) VALUES ("230586115877240832","Exterminatus","230592026951811074","230588178409455616","https://images-ext-1.discordapp.net/external/BMLRG9klXozguEpuGEZVKBiEGd0X7ytyaUpnGhWje_c/https/s3-us-west-2.amazonaws.com/www.guilded.gg/team_images/avatars/e02bcbd00f793d50624b2ec1.jpg");
  INSERT INTO guilds (guildid,guildname,channelid,officerid,logo) VALUES ("626677421101547521","A2","626677470157864960","626677622054846484","https://images-ext-1.discordapp.net/external/BMLRG9klXozguEpuGEZVKBiEGd0X7ytyaUpnGhWje_c/https/s3-us-west-2.amazonaws.com/www.guilded.gg/team_images/avatars/e02bcbd00f793d50624b2ec1.jpg");
  INSERT INTO guilds (guildid,guildname,channelid,officerid,logo) VALUES ("460865078359490570","BandB","632690312342536233","461159457767030784","https://cdn.discordapp.com/attachments/558700673437401089/592692951742939147/bnblogo-003.png");
-
-
-
-
-
