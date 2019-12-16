@@ -112,7 +112,8 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 			//embed.addField("Details:", bot["alemalexiaspecials"].filter(para => para.trigg ==  "ERG")[0].docsurl)
 			embed.setDescription(bot["alemalexiaspecials"].filter(para => para.trigg == "ERG")[0].description )
 		}else{
-			embed.setThumbnail("https://images-ext-1.discordapp.net/external/BMLRG9klXozguEpuGEZVKBiEGd0X7ytyaUpnGhWje_c/https/s3-us-west-2.amazonaws.com/www.guilded.gg/team_images/avatars/e02bcbd00f793d50624b2ec1.jpg")
+			//embed.setThumbnail("https://images-ext-1.discordapp.net/external/BMLRG9klXozguEpuGEZVKBiEGd0X7ytyaUpnGhWje_c/https/s3-us-west-2.amazonaws.com/www.guilded.gg/team_images/avatars/e02bcbd00f793d50624b2ec1.jpg")
+      embed.setThumbnail(msg.guild.iconURL)
 			embed.setDescription("A new event has been created! ")
 }
     if (options["restriction"].length > 0){
