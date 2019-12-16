@@ -7,16 +7,44 @@ const fh = require("../helper/functions.js")
 // bot, msg, options, mysql, "signup", Discord
 
 exports.update = (bot, mysql, Discord) => {
-	console.log('This job ran at ' + new Date());
-
-	// check if event is still actual or set to inactive
-	// select all active events SQL
-//	querySignups = "SELECT signups.duserid, signups.role, events.channelid, events.channelid2, events.announceid, events.announceid2 FROM signups INNER JOIN events ON signups.eventid=events.eventid WHERE signups.eventid = '" + eventid + "';"
+	const now = new Date();
+	console.log('This job ran at ' + now);
+	//now.setHours(now.getHours() + 3);
 
 	queryEvent = "SELECT * FROM events WHERE active = '1';";
 	queryRoles = "SELECT eventid, rolename, rolesymbol, rolemax FROM roles;";
 
 	dh.mysqlQuery(mysql, queryEvent, function(err, all) {
+
+		// check whether there are active events that need to be automatically closed
+		all.forEach(function(event){
+			console.log(event.eventid + " : " + event.eventstamp + " : " + now + " : ")
+			if (event.eventstamp <=  now ){
+
+				bot.channels.get(event.channelid).fetchMessage(event.announceid).then(message => {
+					message.embeds[0].description = ":no_entry_sign: This event is ongoing or in the past! :no_entry_sign: ";
+					message.edit(new Discord.RichEmbed(message.embeds[0]));
+					message.clearReactions();
+				})
+
+				bot.channels.get(event.channelid2).fetchMessage(event.announceid2).then(message => {
+					message.embeds[0].description = ":no_entry_sign: This event is ongoing or in the past! :no_entry_sign: ";
+					message.edit(new Discord.RichEmbed(message.embeds[0]));
+					message.clearReactions();
+				})
+
+				/// not yet finished
+				var queryU = "UPDATE events SET active = 0 WHERE eventid= '"+ event.eventid +"';";
+		    dh.mysqlQuery(mysql, queryU, function(err2, all2) {
+
+
+				});
+				///
+
+
+			}
+		});
+
 		dh.mysqlQuery(mysql, queryRoles, function(errRoles, allRoles) {
 
 		var bothannounces = [];

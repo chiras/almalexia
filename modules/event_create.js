@@ -99,7 +99,7 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
   }
 
   formatdatex = formatdate.toLocaleString('en-us', dateoptions)
-  eventstamp = formatdate.toLocaleString().slice(0, 19).replace('T', ' ');
+  eventstamp = formatdate.toISOString().slice(0, 19).replace('T', ' ');
 
   /// [TODO] need to change to timestamp in the database
 
