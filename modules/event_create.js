@@ -96,7 +96,7 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 
 		var embed = mh.prepare(Discord);
 		embed.setTitle(eventname)
-		embed.addField("Date:", eventdate + " at " + eventtime + " CET")
+		embed.addField("Date:", eventdate + " at " + eventtime)
 		embed.addField("Signups:", "<none>")
 		embed.addField("Reserves:", "<none>")
 		embed.addField("Declines:", "<none>")
@@ -191,7 +191,7 @@ module.exports = (bot, msg, options, mysql, type, Discord) => {
 
   dh.mysqlQuery(mysql, query, function(err, all) {
     //console.log(all)
-    //console.log(msg.guild.id + "!="+ all[0].guildid);
+    console.log(msg.guild.id + "!="+ all[0].guildid);
     if ( msg.guild.id != all[0].guildid){
       fh.success(msg,"FALSE")
       return
