@@ -1,6 +1,7 @@
 const dh = require("../helper/db.js")
 
-var isUserID = new RegExp(/\<\@[0-9]+\>/g)
+//var isUserID = new RegExp(/\<\@[0-9]+\>/g)
+var isUserID = new RegExp(/\S+#[0-9]+/g)
 
 
 function editMessages(bot,channelid,messageid, outputText, count, field, Discord){
@@ -49,10 +50,15 @@ exports.updateSignups = function(eventid, bot, mysql, Discord, reactsignup) {
   // // 	var querySignups = "SELECT duserid FROM signups  WHERE eventid = '" + sqlStatements[1] + "';";
 
   dh.mysqlQuery(mysql, querySignups, function(err2, all2) {
-    //console.log(all2)
+    console.log(all2)
 
   		  var signups = all2.map(function(all2){
-  				return {role: all2.role, user: "<@"+all2.duserid+">", type : all2.type};
+//  				return {role: all2.role, user: "<@"+all2.duserid+">", type : all2.type};
+          const dev = bot.users.get(all2.duserid) //|| await bot.fetchUser(all2.duserid);
+          console.log(dev);
+//          return {role: all2.role, user: bot.fetchUser(all2.duserid).username, type : all2.type};
+          return {role: all2.role, user: bot.users.get(all2.duserid).tag, type : all2.type};
+
   			})//.join(",");//.filter( onlyUnique ).join(",");
 
         var counts = {  Signups : 0, Reserves : 0, Declines : 0};
@@ -75,6 +81,8 @@ exports.updateSignups = function(eventid, bot, mysql, Discord, reactsignup) {
               output.push(item);
             }
           });
+
+          console.log(signups);
 
           var outputText = output.map(role => {
 
@@ -114,6 +122,8 @@ exports.updateSignups = function(eventid, bot, mysql, Discord, reactsignup) {
             var signed = outputText.filter(type => type.startsWith("0")).join("\n").replace(/0\|/g,"");
             var reserve = outputText.filter(type => type.startsWith("1")).join("\n").replace(/1\|/g,"");
             var declined = outputText.filter(type => type.startsWith("2")).join("\n").replace(/2\|/g,"");
+
+            console.log(signed);
 
             counts.Signups = (signed.match(isUserID) || []).filter( onlyUnique ).length;
             counts.Reserves = (reserve.match(isUserID) || []).filter( onlyUnique ).length;
